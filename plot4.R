@@ -13,22 +13,23 @@ par(mfcol = c(2,2))
 # is equivalent to using converted datetime because our data is regularly one 
 # minute apart and in increasing order of datetime
 #
-# match X axis ticks with the reasoning that Thu starts at the 1st row, Fri starts at 1441st row, 
-# and Sat starts at 2881st row, which would not require any conversion on Date and Time. 
+# Function tick_x_axis() matches X axis ticks with the reasoning that Thu starts at the 1st row, 
+# Fri starts at 1441st row, and Sat starts at 2881st row, saving trouble of converting Date and Time. 
+tick_x_axis <- function() axis(1, at=c(1,1441,2881),labels=c('Thu','Fri','Sat'))
 
 plot(hpc$Global_active_power,typ='l',ylab="Global Active Power (kilowatts)", xlab="", xaxt='n')
-axis(1, at=c(0,1440,2880),labels=c('Thu','Fri','Sat'))
+tick_x_axis()
 
 plot(hpc$Sub_metering_1,typ='l',ylab="Energy sub metering", xlab="", xaxt='n')
 lines(x=seq(1,2880),y=hpc$Sub_metering_2, col='red')
 lines(x=seq(1,2880),y=hpc$Sub_metering_3, col='blue')
 legend('topright', legend=c('Sub_metering_1', 'Sub_metering_2', 'Sub_metering_3'), cex=0.8, bty='n', lty=c(1,1,1), col=c('black','red','blue'))
-axis(1, at=c(0,1440,2880),labels=c('Thu','Fri','Sat'))
+tick_x_axis()
 
 plot(hpc$Voltage,typ='l',ylab="Voltage", xlab="datetime", xaxt='n' )
-axis(1, at=c(1,1441,2881),labels=c('Thu','Fri','Sat'))
+tick_x_axis()
 
 plot(hpc$Global_reactive_power,typ='l',ylab="Global_reactive_power", xlab="datetime", xaxt='n' )
-axis(1, at=c(1,1441,2881),labels=c('Thu','Fri','Sat'))
+tick_x_axis()
 
 dev.off()

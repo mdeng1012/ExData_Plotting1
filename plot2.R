@@ -16,6 +16,6 @@ with(hpc, plot(hpc$Global_active_power,typ='l',ylab="Global Active Power (kilowa
 # match X axis ticks with the reasoning that Thu starts at the 1st row, Fri starts at 1441st row, 
 # and Sat starts at 2881st row, which would not require any conversion on Date and Time. 
 
-axis(1, at=c(0,1440,2880),labels=c('Thu','Fri','Sat'))
+axis(1, at=c(1,1441,2881),labels=c('Thu','Fri','Sat'))
 
 dev.off()
